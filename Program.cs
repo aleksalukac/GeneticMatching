@@ -8,7 +8,7 @@ namespace genetic01
 {
     class Program
     {
-        const int n = 10;
+        const int n = 100;
         const int numberOfGenerations = 40;
         const int unitsPerGeneration = 100;
 
@@ -17,7 +17,7 @@ namespace genetic01
         const int mutatedUnits = 30;
 
 
-        const int favorite = 3;
+        const int favorite = 3; //problem on lines 61, 95, 23, 24, 26, 27 (hardcoded) if this number is changed, needs to bi fixed
         const int leastFavorite = 3;
 
         int[] boysPositiveGrader = { 300, 200, 100 };
@@ -170,16 +170,16 @@ namespace genetic01
 
         int[] geneticMutation(int[] unit, Random rnd)
         {
-            int numberOfMutations = rnd.Next(1, 6);
+            int numberOfMutations = rnd.Next(1, (n / 2) + 1);
 
             var newUnit = (int[])unit.Clone();
 
             for (int i = 0; i < numberOfMutations; i++)
             {
-                int k = rnd.Next(0, 10);
-                int j = rnd.Next(0, 10);
+                int k = rnd.Next(0, n);
+                int j = rnd.Next(0, n);
                 while (j == k)
-                    j = rnd.Next(0, 10);
+                    j = rnd.Next(0, n);
 
                 int swap = newUnit[k];
                 newUnit[k] = newUnit[j];
